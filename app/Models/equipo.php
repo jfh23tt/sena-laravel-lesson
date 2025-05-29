@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VideoJuego extends Model
+class equipo extends Model
 {
-    protected $table = "VideoJuego";
+   protected $table = "equipo";
     protected $fillable = [
-        
+         
         "nombre",
-        "id_modalidad"
-         ];
+        "lider"
+        
+       
+    ];
 }

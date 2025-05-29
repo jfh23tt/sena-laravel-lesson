@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VideoJuego;
+
 use Illuminate\Http\Request;
 use App\Models\Torneo;
 class TorneoController extends Controller
 {
-    public function create(Request $request) {
+    public function createf(Request $request) {
         Torneo::create([
             "nombre" => $request->nombre,
-            "premio" => $request->premio,
-            "limite_equipos" => $request->limite_equipos,
+            "fecha_inicio" => $request->fecha_inicio,
+             "fecha_fin" => $request->fecha_fin,
             "modalidad" => $request->modalidad,
+            "premio" => $request->premio,
+            
+         
+         
+         
+        
+        
         ]);
         return response()->json([
             "message" => "Torneo Guardado Exitosamente!"
@@ -28,7 +35,8 @@ class TorneoController extends Controller
         $torneo->modalidad = $request->modalidad;
         $torneo->videojuego()->associate($videojuego);
         $torneo->save();
-        return response()->json([
+        $torneo->Resultados()->associate($Resultado);
+        return response()-> json([
             "message"=> "Torneo creado con video juego exitosamente"
             ],201);
 
@@ -47,5 +55,11 @@ class TorneoController extends Controller
             "message" => "Torneo obtenido exitosamente"
         ]);
     }
-
+public function resultados(Resultados $torneo) {
+        return response()->json([
+            "data" => $torneo->load('Resultados'),
+            "message" => "Resultados obtenido exitosamente"
+        ]);
+    }
+        
 }

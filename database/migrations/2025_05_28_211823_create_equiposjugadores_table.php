@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('torneos', function (Blueprint $table) {
+        Schema::create('euiposjugadores', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre");
-            $table->string("premio");
-            $table->integer("limite_equipos");
-            $table->string("modalidad");
+             $table->string("id_jugador");
+        $table->string("id_equipo");
+            $table->string("id_torneo");
+
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('torneos');
+        Schema::dropIfExists('euiposjugadores');
     }
 };

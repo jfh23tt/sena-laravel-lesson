@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('video_juegos', function (Blueprint $table) {
+          Schema::create('modalidad', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('tipo');
+           
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('video_juegos');
+        //
     }
 };
