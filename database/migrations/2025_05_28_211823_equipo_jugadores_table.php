@@ -9,15 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+  public function up(): void
     {
-Schema::create('equipo', function (Blueprint $table) {
+        Schema::create("equipo_jugadores", function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-             $table->string('lider');
-           
+            $table->unsignedBigInteger('id_jugador');
+            $table->unsignedBigInteger('equipo_id');
+            $table->unsignedBigInteger('id_torneo');
             $table->timestamps();
-        });    }
+    });
+}
+    
 
     /**
      * Reverse the migrations.

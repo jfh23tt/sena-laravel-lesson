@@ -4,14 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class equipo extends Model
+class Equipo extends Model
 {
-   protected $table = "equipo";
+    use SoftDeletes;
+    protected $primaryKey = "equipo_id";
     protected $fillable = [
-         
-        "nombre",
-        "lider"
+        "equipo_id",
+        "nombre", 
+        "lider_id"
         
-       
     ];
+
+    public function lider(){
+        return $this->belongsTo(Jugadores::class, "id_jugador");
+    }
+
+    public function torneos(){
+        return $this->belongsToMany(Torneo::class,"equipo_torneo", "equipo_id","id_torneo");
+    }
+    public function jugadores(){
+        return $this->belongsToMany(Jugadores::class,"equipo_jugador", "equipo_id","id_jugador");
+    }
 }

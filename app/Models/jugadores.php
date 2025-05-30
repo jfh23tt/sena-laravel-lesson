@@ -4,15 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class jugadores extends Model
+class Jugadores extends Model
 {
-protected $table = "jugadores";
-    protected $fillable = [
-        "nombre", 
-        "nick",
+    protected $primaryKey = "id_jugador";
+    protected $fillable =[
+        "id_jugador",
+        "nombre",
+        "nickname",
         "correo",
-        "telefono",
         "pais"
-       
+
     ];
+
+    public function equipos(){
+        return $this->belongsToMany(Equipos::class,"equipo_jugador", "equipo_id");
+    }
+    
 }

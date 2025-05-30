@@ -9,14 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+     public function up(): void
     {
-        Schema::create('euiposjugadores', function (Blueprint $table) {
-            $table->id();
-             $table->string("id_jugador");
-        $table->string("id_equipo");
-            $table->string("id_torneo");
-
+        Schema::create('modalidad', function (Blueprint $table) {
+            $table->id('modalidad_id');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('euiposjugadores');
+        Schema::dropIfExists('modalidad');
     }
 };

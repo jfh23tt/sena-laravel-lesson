@@ -11,24 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Torneo', function (Blueprint $table) {
+        Schema::create("modalidad_videojuegos", function (Blueprint $table) {
             $table->id();
-            $table->string("nombre");
-            $table->string("fecha_inicio");
-            $table->string("fecha_fin");
-            $table->string("modalidad");
-            $table->string("premio");
+            $table->unsignedBigInteger('videojuego_id');
+            $table->unsignedBigInteger('modalidad_id');
             $table->timestamps();
-           
-        
-        });
-    }
+    });
+}
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('torneos');
+        //
     }
 };

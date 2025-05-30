@@ -9,24 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+   public function up(): void
     {
-        Schema::create('jugadores', function (Blueprint $table) {
-            $table->id();
+        Schema::create('torneos', function (Blueprint $table) {
+            $table->id('id_torneo');
             $table->string("nombre");
-            $table->string("nick");
-            $table->string("correo");
-            $table->string("telefono");
-            $table->string("pais");
+            $table->string("premio");
+            $table->integer("limite_equipos");
+            $table->string("modalidad");
             $table->timestamps();
         });
-        
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-   
+        Schema::dropIfExists('torneos');
     }
 };

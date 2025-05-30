@@ -1,24 +1,48 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\TipoVideojuego;
 use Illuminate\Http\Request;
 
-class TipovideojuegoController extends Controller
+class TipoVideojuegoController extends Controller
 {
-     public function create(Request $request) {
-        Tipovideojuego::create([
-            "id_videojuego" => $request->id_videojuego,
-            "nombre" => $request->nombre,
-             
-         
-         
-         
-        
-        
+    public function create(Request $request){
+        TipoVideojuego::create([
+            
+            "tipo" => $request->tipo,
         ]);
+        
         return response()->json([
-            "message" => "Torneo Guardado Exitosamente!"
-        ], 201);
+            "message" => "Tipo de videjuego guardado exitosamente"
+        ],201   );
     }
+
+    public function getAll(TipoVideojuego $request){
+        return response()->json([
+            "data" => $request->get(),
+            "message" => "Consulta exitosa"
+        ],200);
+    }
+
+    public function update(Request $request, TipoVideojuego $videojuego){
+        $videojuego->update([ 
+        "tipo" => $request->tipo
+        ]);  
+        return response()->json([
+            "message" => "Actualizado exitosamente"
+        ],200);
+
+
+    }
+
+    public function destroy( TipoVideojuego $videojuego) {
+        $videojuego->delete();
+         return response()->json([
+            "message" => "Tipo de video juego eliminado Exitosamente!"
+        ], 200);
+     
+    }
+
+    
+    
 }
